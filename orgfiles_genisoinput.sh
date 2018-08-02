@@ -14,7 +14,7 @@ if [ $# -eq 0 ]
 fi
 
 # create dir (optional)
-# git clone git@github.com:dotbot2000/iso.git # https://github.com/aarondotter/iso
+# git clone https://github.com/aarondotter/iso # git@github.com:dotbot2000/iso.git
 # cd iso
 export ISO_DIR=/home/tjr63/iso
 mkdir --parents data/eeps data/isochrones
