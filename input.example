@@ -3,21 +3,60 @@ example
 #initial Y, initial Z, [Fe/H], [alpha/Fe], v/vcrit (space separated)
    0.2703 1.42857e-02   0.00        0.00     0.4
 #data directories: 1) history files, 2) eeps, 3) isochrones
-data/tracks
+data/tracks/c0
 data/eeps
 data/isochrones
 #read history_columns
-my_history_columns_basic.list
+/home/tjr63/mesa-r9793/star/defaults/history_columns.list
 #specify tracks
-4
-00008M.track
-00100M.track
-01000M.track
-10000M.track
+43
+m0p8.data
+m0p9.data
+m1p0.data
+m1p1.data
+m1p2.data
+m1p3.data
+m1p4.data
+m1p5.data
+m1p6.data
+m1p7.data
+m1p8.data
+m1p9.data
+m2p0.data
+m2p1.data
+m2p2.data
+m2p3.data
+m2p4.data
+m2p5.data
+m2p6.data
+m2p7.data
+m2p8.data
+m2p9.data
+m3p0.data
+m3p1.data
+m3p2.data
+m3p3.data
+m3p4.data
+m3p5.data
+m3p6.data
+m3p7.data
+m3p8.data
+m3p9.data
+m4p0.data
+m4p1.data
+m4p2.data
+m4p3.data
+m4p4.data
+m4p5.data
+m4p6.data
+m4p7.data
+m4p8.data
+m4p9.data
+m5p0.data
 #specify isochrones
-isochrones_example.txt
+isochrone_c0.dat
 min_max
 log10
 51
 5.0
-10.0
+10.11
