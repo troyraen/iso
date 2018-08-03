@@ -27,7 +27,7 @@ done
 
 # copy all history files
 declare -a hfiles # store names of history files for input.example
-maindir="implicit_test2"
+maindir="histdat"
 spin="SD"
 cb=$1 # script input argument
 destdir="data/tracks/c$cb"
@@ -38,7 +38,7 @@ for mr in {0..5}; do
     for mp in {0..9}; do
 # for mr in {2..3}; do
 #     for mp in {0..1}; do
-        srchdat="/home/tjr63/histdat/${maindir}/RUNS/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
+        srchdat="/home/tjr63/${maindir}/RUNS/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
         if [ -e $srchdat ]; then
             cp ${srchdat} ${destdir}/m${mr}p${mp}.data
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
