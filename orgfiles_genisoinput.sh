@@ -71,4 +71,6 @@ log10
 
 
 # run isochrone program
+./clean
+./mk
 ./make_eep $isocinput && ./make_iso $isocinput
