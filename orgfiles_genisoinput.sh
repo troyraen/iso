@@ -2,6 +2,9 @@
 #   and generates the input file isocinput for Aaron's isochrone program
 #   can run ./make_eep and ./make_iso at end
 #
+#   Assumes duplicate models (from backups and restarts) have
+#   been removed from history files
+#
 #   Script takes one argument: cboost number in [0..6]
 ###
 
@@ -14,17 +17,11 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-# create dir (optional)
-# git clone https://github.com/aarondotter/iso # git@github.com:dotbot2000/iso.git
-# cd iso
-export ISO_DIR=/home/tjr63/isomy
+export ISO_DIR=$(pwd)
 mkdir --parents data/eeps data/isochrones
 for cb in {0..6}; do
     mkdir --parents data/tracks/c$cb
 done
-# chmod 744 *
-# ./clean
-# ./mk
 
 # copy all history files
 declare -a hfiles # store names of history files for input.example
