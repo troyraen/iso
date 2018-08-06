@@ -51,7 +51,7 @@ program make_isochrone
   do i=1,ntrk
      call read_eep(s(i))
      if(s(i)% ignore) cycle
-     if(i<first) then 
+     if(i<first) then
         first=i             !this marks the first valid eep file
         prev=first
      elseif(prev>first)then
@@ -95,7 +95,7 @@ program make_isochrone
   set% iso(:)% alpha_div_Fe = set% alpha_div_Fe
   set% iso(:)% v_div_vcrit = set% v_div_vcrit
 
-  !create isochrones 
+  !create isochrones
   do i=1,set% number_of_isochrones
      call do_isochrone_for_age(t,set% iso(i),ierr)
      if (ierr/=0) exit
@@ -156,7 +156,7 @@ contains
 
     !this is temporary storage for the isochrone data:
     !result1 stores the data for all EEPs, valid tells
-    !which ones are good and will be returned via the iso 
+    !which ones are good and will be returned via the iso
     !derived type
     allocate(result1(ncol,max_eep),result2(ncol,max_eep),valid(max_eep))
     result1 = 0d0
@@ -201,7 +201,7 @@ contains
           endif
        endif
     enddo
-    
+
     !now check each track to make sure it is complete for its type
     do k=1,n
        if(s(k)% star_type == star_high_mass .and. s(k)% neep < max_neep_high) then
@@ -214,7 +214,7 @@ contains
 
     max_age=age + log_age_delta
     min_age=age - log_age_delta
-    
+
     eep_loop1: do eep=1,max_eep
 
        !determine tracks for which the ith eep is defined
@@ -231,7 +231,7 @@ contains
              skip(k,eep) = .true.
           endif
        enddo
-       
+
        !this loop attempts to pick out non-monotonic points
        if(top_down)then
           if(.not.use_double_eep)then
@@ -315,7 +315,7 @@ contains
           return
        endif
 
-       if(iso_debug) then 
+       if(iso_debug) then
           write(*,*) ' loc, count = ', loc, count(eep)
           write(*,*) skip(:,eep)
           do k=1,count(eep)
@@ -323,12 +323,12 @@ contains
           enddo
        endif
 
-       !this block checks between two tracks at the current EEP to see if the 
-       !age lies in between the two. if it does, then it outputs a linear mass 
+       !this block checks between two tracks at the current EEP to see if the
+       !age lies in between the two. if it does, then it outputs a linear mass
        !interpolation. it is checking to see if this happens more than once.
        !j gives the number of times that this happens for a given EEP.
        if(use_double_eep)then
-          pass=0 
+          pass=0
           k_loop: do k=1,count(eep)-1
 
              if(.not.skip(k,eep))then
@@ -399,7 +399,7 @@ contains
        j=0
        allocate(mass_tmp(max_eep))
        do eep=1,max_eep
-          if(valid(eep)>0) then 
+          if(valid(eep)>0) then
              j = j+1
              mass_tmp(j) = result1(i_Minit,eep)
           endif
@@ -458,12 +458,12 @@ contains
        enddo
 
 
-       !this block checks between two tracks at the current EEP to see if the 
-       !age lies in between the two. if it does, then it outputs a linear mass 
+       !this block checks between two tracks at the current EEP to see if the
+       !age lies in between the two. if it does, then it outputs a linear mass
        !interpolation. it is checking to see if this happens more than once.
        !j gives the number of times that this happens for a given EEP.
        if(use_double_eep)then
-          pass=0 
+          pass=0
           j_loop: do j=1,count(eep)-1
 
              if(.not.skip(j,eep))then
@@ -514,7 +514,7 @@ contains
 
           do index = 1, ncol
              if(index==i_Minit) cycle
-             
+
              mass = result1(i_Minit,eep)
 
              y(1) = s(klo)% tr(index,eep)
@@ -586,7 +586,7 @@ contains
 
   subroutine monotonic_mass_range(ages,k,lo,hi)
     !this subroutine determines the upper and lower limits that
-    !should be used in the EEP interpolation for the case of 
+    !should be used in the EEP interpolation for the case of
     !double EEPs; default result is lo=1, hi=size(ages)
     real(dp), intent(in) :: ages(:)
     integer, intent(in) :: k
@@ -656,7 +656,7 @@ contains
     integer, intent(out) :: ierr
     integer :: j,k
     integer, parameter :: nwork = max(mp_work_size,pm_work_size)
-    real(dp) :: y 
+    real(dp) :: y
     real(dp), target :: f_ary(4*count), work_ary(count*nwork)
     real(dp), pointer :: f1(:)=>NULL(), f(:,:)=>NULL(), work(:)=>NULL()
 
@@ -694,7 +694,7 @@ contains
        call interp_m3(x_array,count,f1,method,nwork,work,label,ierr)
     endif
 
-    call interp_value(x_array,count,f1,x,y,ierr)      
+    call interp_value(x_array,count,f1,x,y,ierr)
 
     if(is_bad_num(x) .or. is_bad_num(y))then
        write(0,*) ' eep = ', eep
@@ -741,17 +741,17 @@ contains
     read(io,'(a8)') version_string
     read(io,*) !skip comment
     read(io,*) initial_Y, initial_Z, Fe_div_H, alpha_div_Fe, v_div_vcrit
-    read(io,*) !skip comment 
+    read(io,*) !skip comment
     read(io,'(a)') history_dir
     read(io,'(a)') eep_dir
     read(io,'(a)') iso_dir
-    read(io,*) !skip comment 
+    read(io,*) !skip comment
     read(io,'(a)') history_columns_list
-    read(io,*) !skip comment 
+    read(io,*) !skip comment
     read(io,*) ntrk
     allocate(s(ntrk))
     do i=1,ntrk
-       read(io,'(a)',iostat=ierr) s(i)% filename 
+       read(io,'(a)',iostat=ierr) s(i)% filename
        s(i)% filename = trim(s(i)% filename)
        if(ierr/=0) exit
     enddo
@@ -798,7 +798,7 @@ contains
     enddo
 
     read(io,'(a6)',iostat=ierr) eep_style
-    if(ierr==0 .and. eep_style=='double') then 
+    if(ierr==0 .and. eep_style=='double') then
        use_double_eep=.true.
     else
        use_double_eep=.false.
@@ -828,11 +828,12 @@ contains
     n = size(array)
     if(n<=2)then
        write(*,*) ' Warning, monotonic: array of length <= 2'
+       write(*,*) 'array = ', array
     else
        ascending = array(1) <= array(n)
        if(ascending)then
           do i=1,n-1
-             if(array(i) > array(i+1)) then 
+             if(array(i) > array(i+1)) then
                 if(iso_debug) write(*,*) array(i), ' > ', array(i+1)
                 return
              endif
@@ -883,7 +884,7 @@ contains
     real(dp), parameter :: eps=1d-1
     allocate(w(size(x)))
     w = 1d0/(eps+abs(x-x0))
-    y0 = sum(y*w)/sum(w)      
+    y0 = sum(y*w)/sum(w)
     deallocate(w)
   end function npoint
 
