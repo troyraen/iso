@@ -828,7 +828,6 @@ contains
     n = size(array)
     if(n<=2)then
        write(*,*) ' Warning, monotonic: array of length <= 2'
-       write(*,*) 'array = ', array
     else
        ascending = array(1) <= array(n)
        if(ascending)then
