@@ -46,10 +46,13 @@ for mr in {0..5}; do
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
             cp ${srchdat} ${hdat}tmp
-            awk '{ if (NR < 7) {print $0}
-                else { for(i=1;i<59;i++) {print $i}
-                    {print $62} }}' < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
-            rm ${hdat}tmp
+            lnct=$(( $(sed -n '$=' ${hdat}tmp) -6 ))
+            (head -6 > ${hdat}; tail -$lnct > ${hdat}tail) < ${hdat}tmp
+            cut -f1-58,62 ${hdat}tail >> ${hdat}
+            # awk '{ if (NR < 7) {print $0}
+            #     else { for(i=1;i<59;i++) {print $i}
+            #         {print $62} }}' < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
+            rm ${hdat}tmp ${hdat}tail
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
         fi
     done
