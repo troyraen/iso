@@ -18,22 +18,26 @@ if [ $# -eq 0 ]
 fi
 
 export ISO_DIR=$(pwd)
-rm -r data/*
-mkdir --parents data/eeps data/isochrones
-for cb in {0..6}; do
-    mkdir --parents data/tracks/c$cb
-done
+# for cb in {0..6}; do
+#     mkdir --parents data/tracks/c$cb
+# done
 
-# copy all history files
-declare -a hfiles # store names of history files for input.example
-maindir="mesaruns"
-spin="SD"
 cb=$1 # script input argument
 destdir="data/tracks/c$cb"
+rm -r data/*
+mkdir --parents $destdir
+mkdir --parents data/eeps data/isochrones
+
+maindir="mesaruns"
+spin="SD"
 isocinput="input.example"
 isocoutput="isochrone_c$cb.dat"
 termout="makeeepiso.out"
 
+echo
+echo "Copying history.data files from $maindir/RUNS_c0_for_isochrones/.../LOGS to $destdir"
+echo
+declare -a hfiles # store names of history files for input.example
 for mr in {0..5}; do
     for mp in {0..9}; do
 # for mr in {2..3}; do
@@ -74,8 +78,12 @@ log10
 # run isochrone program
 ./clean
 ./mk
-echo "\n\trunning make_eep and make_iso.
-\toutput redirecting to $termout.
-\tfile will open when complete."
-(./make_eep $isocinput && ./make_iso $isocinput) &> $termout
-less $termout
+echo
+echo "running make_eep and make_iso."
+echo "output file is ${isocoutput}."
+echo
+./make_eep $isocinput && ./make_iso $isocinput
+# output redirecting to $termout.
+# file will open when complete."
+# (./make_eep $isocinput && ./make_iso $isocinput) &> $termout
+# less $termout
