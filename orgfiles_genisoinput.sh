@@ -48,7 +48,7 @@ for mr in {0..5}; do
             cp ${srchdat} ${hdat}tmp
             lnct=$(( $(sed -n '$=' ${hdat}tmp) -4 ))
             (head -4 > ${hdat}; tail -$lnct > ${hdat}tail) < ${hdat}tmp
-            cut -f1-58 ${hdat}tail >> ${hdat}
+            cut -c1-2378 ${hdat}tail >> ${hdat}
             # awk '{ if (NR < 7) {print $0}
             #     else { for(i=1;i<59;i++) {print $i}
             #         {print $62} }}' < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
