@@ -1,4 +1,4 @@
-#### This script copies history files from maindir/RUNS/.... to destdir (data/tracks/cb)
+#### This script copies history files from maindir/RUNS_c0_for_isochrones/.... to destdir (data/tracks/cb)
 #   and generates the input file isocinput for Aaron's isochrone program
 #   can run ./make_eep and ./make_iso at end
 #
@@ -18,6 +18,7 @@ if [ $# -eq 0 ]
 fi
 
 export ISO_DIR=$(pwd)
+rm -r data/*
 mkdir --parents data/eeps data/isochrones
 for cb in {0..6}; do
     mkdir --parents data/tracks/c$cb
@@ -25,18 +26,19 @@ done
 
 # copy all history files
 declare -a hfiles # store names of history files for input.example
-maindir="histdat"
+maindir="mesaruns"
 spin="SD"
 cb=$1 # script input argument
 destdir="data/tracks/c$cb"
 isocinput="input.example"
 isocoutput="isochrone_c$cb.dat"
+termout="makeeepiso.out"
 
 for mr in {0..5}; do
     for mp in {0..9}; do
 # for mr in {2..3}; do
 #     for mp in {0..1}; do
-        srchdat="/home/tjr63/${maindir}/RUNS/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
+        srchdat="/home/tjr63/${maindir}/RUNS_c0_for_isochrones/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
         if [ -e $srchdat ]; then
             cp ${srchdat} ${destdir}/m${mr}p${mp}.data
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
@@ -44,6 +46,7 @@ for mr in {0..5}; do
     done
 done
 len=$(echo ${#hfiles[@]})
+cp /home/tjr63/mesaruns/history_columns.list .
 
 # create input.example (overwrites existing)
 echo "#version string, max 8 characters
@@ -55,7 +58,7 @@ ${destdir}
 data/eeps
 data/isochrones
 #read history_columns
-${MESA_DIR}/star/defaults/history_columns.list
+history_columns.list
 #specify tracks
 ${len}" > $isocinput
 printf "%s\n" "${hfiles[@]}" >> $isocinput
@@ -71,4 +74,8 @@ log10
 # run isochrone program
 ./clean
 ./mk
-./make_eep $isocinput && ./make_iso $isocinput
+echo "\n\trunning make_eep and make_iso.
+\toutput redirecting to $termout.
+\tfile will open when complete."
+(./make_eep $isocinput && ./make_iso $isocinput) &> $termout
+less $termout
