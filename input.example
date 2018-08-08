@@ -7,7 +7,7 @@ data/tracks/c0
 data/eeps
 data/isochrones
 #read history_columns
-/home/tjr63/mesa-r9793/star/defaults/history_columns.list
+history_columns.list
 #specify tracks
 43
 m0p8.data

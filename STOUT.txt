@@ -1,0 +1,138 @@
+
+Copying history.data files from mesaruns/RUNS_c0_for_isochrones/.../LOGS to data/tracks/c0
+
+rm -f /home/tjr63/isomy/make_eep /home/tjr63/isomy/make_iso /home/tjr63/isomy/blend_eeps /home/tjr63/isomy/make_track /home/tjr63/isomy/iso_interp_met /home/tjr63/isomy/iso_interp_age /home/tjr63/isomy/make_cmd
+rm -f *.mod *.o
+terminals database is inaccessible
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_eep_support.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/phases.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/eep.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_eep.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_eep make_eep.o phases.o eep.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_iso.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_iso make_iso.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/blend_eeps.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/blend_eeps blend_eeps.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/BC_tables.f90
+/home/tjr63/isomy/src/BC_tables.f90:38:0:
+
+     allocate(t(n))
+ 
+Warning: 'MEM[(struct bc_table *)&bc_table.126 + 360B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 368B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 448B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 456B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 496B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 504B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 544B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 552B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 608B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 616B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 624B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_eep_color.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/interp_support.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_track.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_track make_track.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_interp_met.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_met iso_interp_met.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_interp_age.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_age iso_interp_age.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_cmd.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_cmd make_cmd.o iso_eep_color.o iso_eep_support.o BC_tables.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/charlies_angel.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/charlies_angel charlies_angel.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/eep_interp_met.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/eep_interp_met eep_interp_met.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/eep_cmd.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/eep_cmd eep_cmd.o iso_eep_support.o iso_eep_color.o BC_tables.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+
+running make_eep and make_iso.
+output file is isochrone_c0.dat.
+
+ m0p8.data          10       10398
+      89     241     274       0       0       0       0       0       0       0
+ m0p9.data          10       10398
+      88     244     275     325     341       0       0       0       0       0
+ m1p0.data          10       10398
+      88     246     276     328    8903    9837   10009   10104   10285       0
+ m1p1.data          10       10398
+      87     247     278     331    8774    9659    9836    9933   10264       0
+ m1p2.data          10       10398
+      87     248     279     296    8698    9559    9736    9833   10309       0
+ m1p3.data          10       10398
+      86     251     282     296    8649    9491    9680    9777   10365       0
+ m1p4.data          10       10398
+      86     253     283     335    8669    9515    9700    9798   10805       0
+ m1p5.data          10       10398
+      86     255     285     341    8676    9522    9709    9807   11149       0
+ m1p6.data          10       10398
+      85     256     286     346    8571    9418    9607    9704   11272       0
+ m1p7.data          10       10398
+      85     256     286     315    8296    9109    9300    9398   11318       0
+ m1p8.data          10       10398
+      85     258     289     341    7723    8425    8615    8716   10976       0
+ m1p9.data          10       10398
+      84     258     289     309    6551    7067    7258    7363   10076       0
+ m2p0.data          10       10398
+      84     259     290     309    4950    5395    5603    5722    9204       0
+ m2p1.data          10       10398
+      84     260     292     311    3140    3428    3617    3762    8329       0
+ m2p2.data          10       10398
+      84     260     292     311     630     890    1243    1458    7259       0
+ m2p3.data          10       10398
+      83     260     292     300     461     487     837    1038    7132       0
+ m2p4.data          10       10398
+      83     261     293     303     464     488     829    1017    7477       0
+ m2p5.data          10       10398
+      83     261     294     302     401     424     740     909    7544       0
+ m2p6.data          10       10398
+      83     261     293     302     391     413     703     853    7568       0
+ m2p7.data          10       10398
+      83     262     294     316     414     436     719     861    7799       0
+ m2p8.data          10       10398
+      83     263     295     303     363     381     615     730    7133       0
+ m2p9.data          10       10398
+      82     263     295     303     361     379     602     710    6847       0
+ m3p0.data          10       10398
+      82     263     295     303     355     372     584     687    6391       0
+ m3p1.data          10       10398
+      82     264     296     304     350     366     570     674    5932       0
+ m3p2.data          10       10398
+      82     263     295     307     373     390     608     713    6192       0
+ m3p3.data          10       10398
+      82     264     296     309     373     390     600     705    5640       0
+ m3p4.data          10       10398
+      82     264     296     308     371     387     593     703    5131       0
+ m3p5.data          10       10398
+      82     264     297     315     378     394     597     713    4618       0
+ m3p6.data          10       10398
+      81     264     297     317     379     394     598     720    4202       0
+ m3p7.data          10       10398
+      81     265     298     319     381     395     598     726    3700    4053
+ m3p8.data          10       10398
+      81     264     297     306     351     365     555     695    2820    3435
+ m3p9.data          10       10398
+      81     264     297     317     379     392     593     740    2612    3283
+ m4p0.data          10       10398
+      81     264     297     333     395     408     607     766    2106    2422
+ m4p1.data          10       10398
+      81     265     297     314     376     388     586     758    1401    1743
+ m4p2.data          10       10398
+      81     264     297     327     390     402     599     786     954    1479
+ m4p3.data          10       10398
+      81     266     298     314     376     388     583     791     932    1487
+ m4p4.data          10       10398
+      81     266     298     315     376     387     584     796     935    2624
+ m4p5.data          10       10398
+      80     267     299     311     347     358     549     760     901    1418
+ m4p6.data          10       10398
+      80     266     299     327     392     402     595     806     952    1390
+ m4p7.data          10       10398
+      80     265     298     310     332     343     530     738     888    2018
+ m4p8.data          10       10398
+      80     266     299     310     344     354     539     745     899    1338
+ m4p9.data          10       10398
+      80     265     298     309     334     344     527     731     890    1363
+ m5p0.data          10       10398
+      80     265     298     308     345     355     537     739     902    1372
+  isochrone output file = data/isochrones/isochrone_c0.dat
