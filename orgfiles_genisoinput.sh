@@ -48,10 +48,10 @@ for mr in {0..5}; do
             cp ${srchdat} ${hdat}tmp
             lnct=$(( $(sed -n '$=' ${hdat}tmp) -4 ))
             (head -4 > ${hdat}; tail -$lnct > ${hdat}tail) < ${hdat}tmp
-            cut -c1-2378 ${hdat}tail >> ${hdat}
+            cut -c1-2378 ${hdat}tail >> ${hdat} #remove the integer and extra columns
             # awk '{ if (NR < 7) {print $0}
             #     else { for(i=1;i<59;i++) {print $i}
-            #         {print $62} }}' < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
+            #         {print $62} }}' < ${hdat}tmp >> ${hdat}
             rm ${hdat}tmp ${hdat}tail
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
         fi
@@ -67,7 +67,7 @@ echo
 echo "#version string, max 8 characters
 example
 #initial Y, initial Z, [Fe/H], [alpha/Fe], v/vcrit (space separated)
-   0.2703 1.42857e-02   0.00        0.00     0.4
+   0.2703 1.4e-02   0.00        0.00     0.4
 #data directories: 1) history files, 2) eeps, 3) isochrones
 ${destdir}
 data/eeps
