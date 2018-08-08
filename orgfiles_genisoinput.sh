@@ -48,9 +48,10 @@ for mr in {0..5}; do
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
             cp ${srchdat} ${hdat}tmp
-            lnct=$(( $(sed -n '$=' ${hdat}tmp) -4 ))
-            (head -4 > ${hdat}; tail -$lnct > ${hdat}tail) < ${hdat}tmp
-            cut -c1-2378 ${hdat}tail >> ${hdat} #remove the integer and extra columns
+            lnct=$(( $(sed -n '$=' ${hdat}tmp) -5 ))
+            (head -5 > ${hdat}tmp; tail -$lnct > ${hdat}tail) < ${hdat}tmp
+            cut -c1-164,205-2378 ${hdat}tail >> ${hdat}tmp #remove the integer and extra columns
+            cut -c1-2337 ${hdat}tmp > $hdat # need to cut off line 5 at the proper number
             # awk '{ if (NR < 7) {print $0}
             #     else { for(i=1;i<59;i++) {print $i}
             #         {print $62} }}' < ${hdat}tmp >> ${hdat}
