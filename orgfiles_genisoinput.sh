@@ -48,7 +48,7 @@ for mr in {0..5}; do
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
             cp ${srchdat} ${hdat}tmp1
-            lnct=$(( $(sed -n '$=' ${hdat}tmp) -5 ))
+            lnct=$(( $(sed -n '$=' ${hdat}tmp1) -5 ))
             (head -5 > ${hdat}tmp2; tail -$lnct > ${hdat}tail) < ${hdat}tmp1
             cut -c1-164,205-2378 ${hdat}tail >> ${hdat}tmp2 #remove the integer and extra columns
             cut -c1-2337 ${hdat}tmp2 > $hdat # need to cut off line 5 at the proper number
