@@ -1,6 +1,12 @@
 
 Copying history.data files from mesaruns/RUNS_c0_for_isochrones/.../LOGS to data/tracks/c0
 
+
+generating input.example
+
+
+./clean && ./mk
+
 rm -f /home/tjr63/isomy/make_eep /home/tjr63/isomy/make_iso /home/tjr63/isomy/blend_eeps /home/tjr63/isomy/make_track /home/tjr63/isomy/iso_interp_met /home/tjr63/isomy/iso_interp_age /home/tjr63/isomy/make_cmd
 rm -f *.mod *.o
 terminals database is inaccessible
@@ -47,7 +53,6 @@ gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -f
 gfortran  -fopenmp -o /home/tjr63/isomy/eep_cmd eep_cmd.o iso_eep_support.o iso_eep_color.o BC_tables.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
 
 running make_eep and make_iso.
-output file is isochrone_c0.dat.
 
  m0p8.data          10       10398
       89     241     274       0       0       0       0       0       0       0
