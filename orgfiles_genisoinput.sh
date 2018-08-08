@@ -1,4 +1,6 @@
-#### This script copies history files from maindir/RUNS_c0_for_isochrones/.... to destdir (data/tracks/cb)
+####
+#   This script copies history files
+#   from $maindir/RUNS_c0_for_isochrones/.../LOGS to $destdir (data/tracks/cb)
 #   and generates the input file isocinput for Aaron's isochrone program
 #   can run ./make_eep and ./make_iso at end
 #
@@ -67,7 +69,7 @@ echo
 echo "#version string, max 8 characters
 example
 #initial Y, initial Z, [Fe/H], [alpha/Fe], v/vcrit (space separated)
-   0.2703 1.4e-02   0.00        0.00     0.4
+   0.2703 1.4e-02   0.00        0.00     0.0
 #data directories: 1) history files, 2) eeps, 3) isochrones
 ${destdir}
 data/eeps
