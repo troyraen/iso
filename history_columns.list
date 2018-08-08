@@ -64,7 +64,7 @@
       !log_xmstar ! log10 mass exterior to M_center (grams)
       !star_mdot ! d(star_mass)/dt (in msolar per year)
       !log_abs_mdot ! log10(abs(star_mdot)) (in msolar per year)
-      num_zones ! number of zones in the model
+      !num_zones ! number of zones in the model
       !species ! size of net
       !log_total_angular_momentum
       !total_rotational_energy
