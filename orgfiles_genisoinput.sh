@@ -80,7 +80,9 @@ log10
 5.0
 10.11" >> $isocinput
 
-
+echo
+echo "./clean && ./mk"
+echo
 # run isochrone program
 ./clean
 ./mk
