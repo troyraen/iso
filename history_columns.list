@@ -844,10 +844,10 @@
 
       !e_thermal ! sum over all zones of Cp*T*dm
 
-      num_retries ! total during the run
-      num_backups ! total during the run
+      !num_retries ! total during the run
+      !num_backups ! total during the run
       !total_num_newton_iterations ! during the run
-      num_newton_iterations ! per step
+      !num_newton_iterations ! per step
 
       !max_conv_vel_div_csound
       !max_gradT_div_grada

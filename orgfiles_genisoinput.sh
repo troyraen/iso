@@ -32,7 +32,7 @@ maindir="mesaruns"
 spin="SD"
 isocinput="input.example"
 isocoutput="isochrone_c$cb.dat"
-termout="makeeepiso.out"
+# termout="makeeepiso.out"
 
 echo
 echo "Copying history.data files from $maindir/RUNS_c0_for_isochrones/.../LOGS to $destdir"
@@ -44,14 +44,20 @@ for mr in {0..5}; do
 #     for mp in {0..1}; do
         srchdat="/home/tjr63/${maindir}/RUNS_c0_for_isochrones/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
         if [ -e $srchdat ]; then
-            cp ${srchdat} ${destdir}/m${mr}p${mp}.data
+            hdat=${destdir}/m${mr}p${mp}.data
+            cp ${srchdat} ${hdat}tmp
+            awk {for(i=1;i<59;i++) {print $i} { print ${62} }} < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
+            rm ${hdat}tmp
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
         fi
     done
 done
 len=$(echo ${#hfiles[@]})
-cp /home/tjr63/mesaruns/history_columns.list .
+# cp /home/tjr63/mesaruns/history_columns.list .
 
+echo
+echo "generating $isocinput"
+echo
 # create input.example (overwrites existing)
 echo "#version string, max 8 characters
 example
@@ -80,7 +86,6 @@ log10
 ./mk
 echo
 echo "running make_eep and make_iso."
-echo "output file is ${isocoutput}."
 echo
 ./make_eep $isocinput && ./make_iso $isocinput
 # output redirecting to $termout.
