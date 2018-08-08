@@ -46,8 +46,9 @@ for mr in {0..5}; do
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
             cp ${srchdat} ${hdat}tmp
-            awk '{ for(i=1;i<59;i++) {print $i}
-            {print $62} }' < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
+            awk '{ if (NR < 7) {print $0}
+                else { for(i=1;i<59;i++) {print $i}
+                    {print $62} }}' < ${hdat}tmp >> ${hdat} #remove the integer and extra columns
             rm ${hdat}tmp
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
         fi
