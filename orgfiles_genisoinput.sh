@@ -52,6 +52,7 @@ for mr in {0..5}; do
             (head -5 > ${hdat}tmp2; tail -$lnct > ${hdat}tail) < ${hdat}tmp1
             cut -c1-164,205-2378 ${hdat}tail >> ${hdat}tmp2 #remove the integer and extra columns
             cut -c1-2337 ${hdat}tmp2 > $hdat # need to cut off line 5 at the proper number
+            sed -i 's/                                        5                                        6/                                         5                                        6' $hdat
             # awk '{ if (NR < 7) {print $0}
             #     else { for(i=1;i<59;i++) {print $i}
             #         {print $62} }}' < ${hdat}tmp >> ${hdat}
