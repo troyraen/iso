@@ -46,7 +46,7 @@ for mr in {0..5}; do
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
             cp ${srchdat} ${hdat}tmp
-            lnct=$(( $(sed -n '$=' ${hdat}tmp) -6 ))
+            lnct=$(( $(sed -n '$=' ${hdat}tmp) -4 ))
             (head -4 > ${hdat}; tail -$lnct > ${hdat}tail) < ${hdat}tmp
             cut -f1-58 ${hdat}tail >> ${hdat}
             # awk '{ if (NR < 7) {print $0}
