@@ -47,15 +47,15 @@ for mr in {0..5}; do
         srchdat="/home/tjr63/${maindir}/RUNS_c0_for_isochrones/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
-            cp ${srchdat} ${hdat}tmp
+            cp ${srchdat} ${hdat}tmp1
             lnct=$(( $(sed -n '$=' ${hdat}tmp) -5 ))
-            (head -5 > ${hdat}tmp; tail -$lnct > ${hdat}tail) < ${hdat}tmp
-            cut -c1-164,205-2378 ${hdat}tail >> ${hdat}tmp #remove the integer and extra columns
-            cut -c1-2337 ${hdat}tmp > $hdat # need to cut off line 5 at the proper number
+            (head -5 > ${hdat}tmp2; tail -$lnct > ${hdat}tail) < ${hdat}tmp1
+            cut -c1-164,205-2378 ${hdat}tail >> ${hdat}tmp2 #remove the integer and extra columns
+            cut -c1-2337 ${hdat}tmp2 > $hdat # need to cut off line 5 at the proper number
             # awk '{ if (NR < 7) {print $0}
             #     else { for(i=1;i<59;i++) {print $i}
             #         {print $62} }}' < ${hdat}tmp >> ${hdat}
-            rm ${hdat}tmp ${hdat}tail
+            rm ${hdat}tmp1 ${hdat}tmp2 ${hdat}tail
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
         fi
     done
