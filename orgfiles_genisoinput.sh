@@ -49,7 +49,7 @@ for mr in {0..5}; do
             hdat=${destdir}/m${mr}p${mp}.data
             lnct=$(( $(sed -n '$=' ${srchdat}) -5 ))
             (head -5 > ${hdat}head; tail -$lnct > ${hdat}tail) < ${srchdat}
-            cut -c1-164,206-2378 ${hdat}tail >> ${hdat}head #remove the integer and extra columns
+            cut -c41-164,206-2378 ${hdat}tail >> ${hdat}head #remove the integer and extra columns
             cut -c1-2337 ${hdat}head > ${hdat} # need to cut off line 5 at the proper number
             # sed -i 's/                                        5                                        6/                                         5                                        6/' $hdat
             # cp ${srchdat} ${hdat}tmp1
@@ -97,8 +97,8 @@ log10
 # echo "./clean && ./mk"
 # echo
 # run isochrone program
-./clean
-./mk
+# ./clean
+# ./mk
 ./make_both $isocinput
 # echo
 # echo "running make_eep and make_iso."
