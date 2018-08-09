@@ -40,7 +40,7 @@
 
    ! some general info about the model
 
-      model_number ! counting from the start of the run
+      !model_number ! counting from the start of the run
       star_age ! elapsed simulated time in years since the start of the run
       !star_age_sec ! elapsed simulated time in seconds since the start of the run
       !star_age_min ! elapsed simulated time in minutes since the start of the run
