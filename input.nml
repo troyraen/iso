@@ -1,7 +1,7 @@
 &track_controls
 
 !write the new tracks to the original EEP directory if true
-!otherwise you can specify an absolute path for each track in the input 
+!otherwise you can specify an absolute path for each track in the input
 output_to_eep_dir = .false.
 
 /
@@ -27,11 +27,11 @@ output_to_eep_dir = .false.
 
 &iso_controls
 
-   !if true and new_max_eep_number > 0 then isochrones 
-   !will stop at this EEP number regardless of how many 
+   !if true and new_max_eep_number > 0 then isochrones
+   !will stop at this EEP number regardless of how many
    !EEPs are in the .eep tracks
    set_max_eep_number = .false.
-   new_max_eep_number = 353 
+   new_max_eep_number = 353
 
    do_smooth = .true.
 
@@ -44,7 +44,7 @@ output_to_eep_dir = .false.
    !considered for age-mass and mass-etc. interpolation
    log_age_delta = 0.5
 
-   very_low_mass_limit=0.71
+   very_low_mass_limit=0.91
 
    iso_debug = .false.
 
@@ -66,8 +66,8 @@ output_to_eep_dir = .false.
    !set the CarbonBurn primary EEP if center_c12 < center_carbon_limit
    center_carbon_limit = 0.05
 
-   !set star_type to high_mass_star if max(log_center_T) > this 
-   log_center_T_limit = 8.5 
+   !set star_type to high_mass_star if max(log_center_T) > this
+   log_center_T_limit = 8.5
 
    !set star_type to high mass star if M_init >= this
    high_mass_limit = 10.0 !Msun
