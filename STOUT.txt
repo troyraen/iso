@@ -4,22 +4,19 @@ Copying history.data files from mesaruns/RUNS_c0_for_isochrones/.../LOGS to data
 
 generating input.example
 
-
-./clean && ./mk
-
 rm -f /home/tjr63/isomy/make_eep /home/tjr63/isomy/make_iso /home/tjr63/isomy/blend_eeps /home/tjr63/isomy/make_track /home/tjr63/isomy/iso_interp_met /home/tjr63/isomy/iso_interp_age /home/tjr63/isomy/make_cmd
 rm -f *.mod *.o
 terminals database is inaccessible
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_eep_support.f90
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/phases.f90
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/eep.f90
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_eep.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/make_eep make_eep.o phases.o eep.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_iso.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/make_iso make_iso.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/blend_eeps.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/blend_eeps blend_eeps.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/BC_tables.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_eep_support.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/phases.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/eep.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_eep.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_eep make_eep.o phases.o eep.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_iso.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_iso make_iso.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/blend_eeps.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/blend_eeps blend_eeps.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/BC_tables.f90
 /home/tjr63/isomy/src/BC_tables.f90:38:0:
 
      allocate(t(n))
@@ -35,25 +32,70 @@ Warning: 'MEM[(struct bc_table *)&bc_table.126 + 360B]' may be used uninitialize
 /home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 608B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
 /home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 616B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
 /home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 624B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_eep_color.f90
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/interp_support.f90
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_track.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/make_track make_track.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_interp_met.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_met iso_interp_met.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/iso_interp_age.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_age iso_interp_age.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/make_cmd.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/make_cmd make_cmd.o iso_eep_color.o iso_eep_support.o BC_tables.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/charlies_angel.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/charlies_angel charlies_angel.o iso_eep_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/eep_interp_met.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/eep_interp_met eep_interp_met.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
-gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r10398/include -c /home/tjr63/isomy/src/eep_cmd.f90
-gfortran  -fopenmp -o /home/tjr63/isomy/eep_cmd eep_cmd.o iso_eep_support.o iso_eep_color.o BC_tables.o -L/home/tjr63/mesa-r10398/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_eep_color.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/interp_support.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_track.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_track make_track.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_interp_met.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_met iso_interp_met.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_interp_age.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_age iso_interp_age.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_cmd.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_cmd make_cmd.o iso_eep_color.o iso_eep_support.o BC_tables.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/charlies_angel.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/charlies_angel charlies_angel.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/eep_interp_met.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/eep_interp_met eep_interp_met.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/eep_cmd.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/eep_cmd eep_cmd.o iso_eep_support.o iso_eep_color.o BC_tables.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+./clean && ./mk
 
-running make_eep and make_iso.
+rm -f /home/tjr63/isomy/make_eep /home/tjr63/isomy/make_iso /home/tjr63/isomy/blend_eeps /home/tjr63/isomy/make_track /home/tjr63/isomy/iso_interp_met /home/tjr63/isomy/iso_interp_age /home/tjr63/isomy/make_cmd
+rm -f *.mod *.o
+terminals database is inaccessible
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_eep_support.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/phases.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/eep.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_eep.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_eep make_eep.o phases.o eep.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_iso.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_iso make_iso.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/blend_eeps.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/blend_eeps blend_eeps.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/BC_tables.f90
+/home/tjr63/isomy/src/BC_tables.f90:38:0:
 
+     allocate(t(n))
+ 
+Warning: 'MEM[(struct bc_table *)&bc_table.126 + 360B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 368B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 448B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 456B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 496B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 504B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 544B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 552B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 608B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 616B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+/home/tjr63/isomy/src/BC_tables.f90:38:0: Warning: 'MEM[(struct bc_table *)&bc_table.126 + 624B]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_eep_color.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/interp_support.f90
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_track.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_track make_track.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_interp_met.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_met iso_interp_met.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/iso_interp_age.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/iso_interp_age iso_interp_age.o iso_eep_support.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/make_cmd.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/make_cmd make_cmd.o iso_eep_color.o iso_eep_support.o BC_tables.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/charlies_angel.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/charlies_angel charlies_angel.o iso_eep_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/eep_interp_met.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/eep_interp_met eep_interp_met.o iso_eep_support.o iso_eep_color.o BC_tables.o interp_support.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+gfortran  -fopenmp -ffree-form -fimplicit-none -O3 -Wall -Wextra -pedantic -g -fbacktrace -fcheck=all  -I/home/tjr63/mesasdk/include -I/home/tjr63/mesa-r9793/include -c /home/tjr63/isomy/src/eep_cmd.f90
+gfortran  -fopenmp -o /home/tjr63/isomy/eep_cmd eep_cmd.o iso_eep_support.o iso_eep_color.o BC_tables.o -L/home/tjr63/mesa-r9793/lib -linterp_2d -linterp_1d -lnum -lf2crlibm -lcrlibm -lmtx -lconst -lutils -lmesaklu `mesasdk_lapack_link` `mesasdk_blas_link` `mesasdk_hdf5_link`
+
+make_eep
  m0p8.data          10       10398
       89     241     274       0       0       0       0       0       0       0
  m0p9.data          10       10398
@@ -140,4 +182,7 @@ running make_eep and make_iso.
       80     265     298     309     334     344     527     731     890    1363
  m5p0.data          10       10398
       80     265     298     308     345     355     537     739     902    1372
+
+
+make_iso
   isochrone output file = data/isochrones/isochrone_c0.dat
