@@ -47,17 +47,21 @@ for mr in {0..5}; do
         srchdat="/home/tjr63/${maindir}/RUNS_c0_for_isochrones/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
         if [ -e $srchdat ]; then
             hdat=${destdir}/m${mr}p${mp}.data
-            cp ${srchdat} ${hdat}tmp1
-            lnct=$(( $(sed -n '$=' ${hdat}tmp1) -5 ))
-            (head -5 > ${hdat}tmp2; tail -$lnct > ${hdat}tail) < ${hdat}tmp1
-            cut -c1-164,205-2378 ${hdat}tail >> ${hdat}tmp2 #remove the integer and extra columns
-            cut -c1-2337 ${hdat}tmp2 > $hdat # need to cut off line 5 at the proper number
-            sed -i 's/                                        5                                        6/                                         5                                        6/' $hdat
+            lnct=$(( $(sed -n '$=' ${srchdat}) -5 ))
+            (head -5 > ${hdat}head; tail -$lnct > ${hdat}tail) < ${srchdat}
+            cut -c1-164,206-2378 ${hdat}tail >> ${hdat}head #remove the integer and extra columns
+            cut -c1-2337 ${hdat}head > ${hdat} # need to cut off line 5 at the proper number
+            # sed -i 's/                                        5                                        6/                                         5                                        6/' $hdat
+            # cp ${srchdat} ${hdat}tmp1
+            # awk '{ if (NR < 5) {print $0}
+            #     else if (NR == 5) {$59=$60=$61=$62=$63=$64=$65=$66=""; print $0}
+            #     else {$5=$59=$60=$61=$63=$64=$65=$66=""; print $0}
+            #     }' < history.data | column -t >> historym.data # ${srchdat} >> $hdat
             # awk '{ if (NR < 7) {print $0}
             #     else { for(i=1;i<59;i++) {print $i}
             #         {print $62} }}' < ${hdat}tmp >> ${hdat}
-            rm ${hdat}tmp1 ${hdat}tmp2 ${hdat}tail
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
+            rm ${hdat}head ${hdat}tail
         fi
     done
 done
@@ -89,16 +93,17 @@ log10
 5.0
 10.11" >> $isocinput
 
-echo
-echo "./clean && ./mk"
-echo
+# echo
+# echo "./clean && ./mk"
+# echo
 # run isochrone program
 ./clean
 ./mk
-echo
-echo "running make_eep and make_iso."
-echo
-./make_eep $isocinput && ./make_iso $isocinput
+./make_both $isocinput
+# echo
+# echo "running make_eep and make_iso."
+# echo
+# ./make_eep $isocinput && ./make_iso $isocinput
 # output redirecting to $termout.
 # file will open when complete."
 # (./make_eep $isocinput && ./make_iso $isocinput) &> $termout

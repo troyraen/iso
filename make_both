@@ -1,5 +1,7 @@
 #!/bin/bash
-echo 
+echo "./clean && ./mk"
+echo
+./clean
 ./mk
 echo
 echo make_eep
