@@ -1,0 +1,88 @@
+1. The pre-MS EEP (PreMS) is chosen to identify the
+point at which the central temperature (Tc) rises above
+a certain value (lower than necessary for sustained nuclear
+reactions). By default this is set at log(Tc) = 5:0 but
+the pre-MS point be chosen as early as possible. If the
+first point in the stellar evolution track is already above
+this threshold, we simply use the first point. It is implicitly
+assumed that even substellar objects, nominally
+M . 0:08M, will meet the PreMS Tc condition.
+
+2. The zero-age main sequence (ZAMS) EEP is taken as
+the first point after the H-burning luminosity exceeds
+99.9% of the total luminosity and before the central H
+mass fraction has fallen by below its initial value by
+0.0015. In the substellar case where neither of these
+criteria is met, the ZAMS point is taken as the maximum
+in Tc along the evolutionary track.
+
+3.-4. Towards the end of core H-burning 2 primary EEPs are
+defined at Xc = 0:3 (intermediate age main sequence:
+IAMS) and Xc = 10-12 (terminal age main sequence:
+TAMS). Two points are used to isolate the portion of the
+MS that may or may not be influenced by the presence
+of a convective core. The practical choice of placing
+two primary EEPs near the end of the MS greatly simplifies
+the treatment of the ‘convective hook’ feature in
+the H-R diagram. In the substellar case, for which no
+central H is consumed, the final point in the track is
+chosen as the TAMS provided that the age at that point
+is greater than some minimum (e.g., 20 Gyr).
+
+5. The RGB tip (RGBTip) EEP identifies the point at
+which the stellar luminosity reaches a maximum—or
+the stellar Teff reaches a minimum—after core H burning
+is complete but before core He burning has progressed
+significantly. This EEP has a recognizable location
+on the H-R diagram of low- and intermediate mass
+stars, hence the name, but the point defined here can
+also be located in high-mass stellar tracks that do not go
+through a ‘red giant’ phase. This is achieved by taking
+the point at which the luminosity reaches a maximum
+or the Teff reaches a minimum, whichever comes first,
+before the center He mass fraction (Yc) is significantly
+reduced by He burning: Yc Yc;TAMS - 0:01.
+
+6. The zero age core He burning (ZACHeB) EEP denotes
+the onset of sustained core He burning. The point is
+identified as the Tc minimum that occurs after the onset
+of He-burning (RGBTip) while Yc >Yc;RGBTip -0:03.
+This temperature minimum is readily identifiable in
+lower-mass stars (Minit < 2M) because the Tc-c evolution
+in this interval has a particular shape due to the
+off-center ignition of He burning under degenerate conditions
+(Paxton et al. 2011). The same feature is less
+obvious in higher-mass stars with non-degenerate cores
+but still identifiable.
+
+7. One primary EEP is identified at the end of core He
+burning (terminal age core He burning: TACHeB) corresponding
+Yc = 10-4.
+
+8a. The EEP marking the onset of the thermally-pulsing
+AGB (TP-AGB) is identified as the point after core He
+burning (Yc < 10-6) when the difference in mass between
+the H-burning and He-burning shell is less than
+0:1M. This is the same criterion used in MESA star
+to identify the onset of thermal pulsations.
+
+8b. For stellar models that are massive enough to bypass
+the TP-AGB and proceed to later phases of core burning,
+the final EEP is set at the end of core C burning
+(CBurn), when the central C mass fraction falls below
+10-4. This marks the end of the primary EEPs for massive
+stars. The remaining primary EEPs are only applicable
+to low- and intermediate-mass stars.
+
+9. A post-AGB (PostAGB) EEP is identified only in stellar
+models that will go on to form a WD. It is meant to locate
+the point at which the TP-AGB phase has ended
+and the star has begun to cross the H-R diagram at
+nearly constant luminosity. The PostAGB EEP is defined
+as the point at which the H-rich stellar envelope
+falls below 20% of the current stellar mass.
+
+10. The WDCS EEP, which follows the Post-AGB, is based
+on the central value of the Coulomb coupling parameter
+􀀀, with a default upper limit of 100. WDCS is only
+considered for models that have a PostAGB EEP.
