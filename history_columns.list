@@ -3,6 +3,25 @@
 
 ! units are cgs unless otherwise noted.
 
+star_age ! elapsed simulated time in years since the start of the run
+star_mass ! in Msun units
+log_LH ! log10 power_h_burn
+log_LHe ! log10 power_he_burn
+log_Teff ! log10 effective temperature
+log_L ! log10 luminosity in Lsun units
+log_g ! log10 gravity
+log_center_T ! temperature
+log_center_Rho ! density
+center h1
+center he4
+center c12
+center_gamma ! plasma interaction parameter
+surface h1
+he_core_mass
+c_core_mass
+
+
+
 ! reorder the following names as desired to reorder columns.
 ! comment out the name to omit a column (fewer columns => less IO => faster running).
 ! remove '!' to restore a column.
@@ -40,8 +59,8 @@
 
    ! some general info about the model
 
-      !model_number ! counting from the start of the run
-      star_age ! elapsed simulated time in years since the start of the run
+!      model_number ! counting from the start of the run
+!      star_age ! elapsed simulated time in years since the start of the run
       !star_age_sec ! elapsed simulated time in seconds since the start of the run
       !star_age_min ! elapsed simulated time in minutes since the start of the run
       !star_age_hr ! elapsed simulated time in hours since the start of the run
@@ -49,12 +68,11 @@
 
       !log_star_age
       !log_star_age_sec
-      star_mass ! in Msun units
       !log_star_mass
 
       !time_step ! timestep in years since previous model
       !time_step_sec ! timestep in seconds since previous model
-      log_dt ! log10 time_step in years
+!      log_dt ! log10 time_step in years
       !log_dt_sec ! log10 time_step in seconds
 
       !star_gravitational_mass ! star_mass is baryonic mass
@@ -64,7 +82,7 @@
       !log_xmstar ! log10 mass exterior to M_center (grams)
       !star_mdot ! d(star_mass)/dt (in msolar per year)
       !log_abs_mdot ! log10(abs(star_mdot)) (in msolar per year)
-      !num_zones ! number of zones in the model
+!      num_zones ! number of zones in the model
       !species ! size of net
       !log_total_angular_momentum
       !total_rotational_energy
@@ -77,7 +95,7 @@
 
    ! mixing regions
 
-      mass_conv_core ! (Msun) mass coord of top of convective core.  0 if core is not convective
+!      mass_conv_core ! (Msun) mass coord of top of convective core.  0 if core is not convective
 
 
       !  mx1 refers to the largest (by mass) convective region.
@@ -242,7 +260,6 @@
 
    ! information about cores
 
-      he_core_mass
       !he_core_radius
       !he_core_lgT
       !he_core_lgRho
@@ -251,7 +268,6 @@
       !he_core_omega
       !he_core_omega_div_omega_crit
 
-      c_core_mass
       !c_core_radius
       !c_core_lgT
       !c_core_lgRho
@@ -260,7 +276,7 @@
       !c_core_omega
       !c_core_omega_div_omega_crit
 
-      o_core_mass
+      !o_core_mass
       !o_core_radius
       !o_core_lgT
       !o_core_lgRho
@@ -269,7 +285,7 @@
       !o_core_omega
       !o_core_omega_div_omega_crit
 
-      si_core_mass
+      !si_core_mass
       !si_core_radius
       !si_core_lgT
       !si_core_lgRho
@@ -278,7 +294,7 @@
       !si_core_omega
       !si_core_omega_div_omega_crit
 
-      fe_core_mass
+      !fe_core_mass
       !fe_core_radius
       !fe_core_lgT
       !fe_core_lgRho
@@ -287,7 +303,7 @@
       !fe_core_omega
       !fe_core_omega_div_omega_crit
 
-      neutron_rich_core_mass
+      !neutron_rich_core_mass
       !neutron_rich_core_radius
       !neutron_rich_core_lgT
       !neutron_rich_core_lgRho
@@ -328,10 +344,10 @@
    ! timescales
 
       !dynamic_timescale ! dynamic timescale (seconds) -- estimated by 2*pi*sqrt(r^3/(G*m))
-!      kh_timescale ! kelvin-helmholtz timescale (years)
+      !kh_timescale ! kelvin-helmholtz timescale (years)
       !mdot_timescale ! star_mass/abs(star_mdot) (years)
       !kh_div_mdot_timescales ! kh_timescale/mdot_timescale
-!      nuc_timescale ! nuclear timescale (years) -- proportional to mass divided by luminosity
+      !nuc_timescale ! nuclear timescale (years) -- proportional to mass divided by luminosity
       !log_chem_timescale ! burn+mix timescale (years)
          ! approximately min over all cells k and species i of x(i,k)/abs(dxdt_mix + dxdt_burn)
       !log_chem_timescale_div_time_step
@@ -342,25 +358,22 @@
       !power_h_burn ! total thermal power from PP and CNO, excluding neutrinos (in Lsun units)
       !power_he_burn ! total thermal power from triple-alpha, excluding neutrinos (in Lsun units)
       !power_c_burn ! total thermal power from carbon burning, excluding neutrinos (in Lsun units)
-      log_LH ! log10 power_h_burn
-      log_LHe ! log10 power_he_burn
       !log_LC ! log10 power_c_burn
-      log_LZ ! log10 total burning power including LC, but excluding LH and LHe and photodisintegrations
-      !log_Lnuc ! log(LH + LHe + LZ)
+!      log_LZ ! log10 total burning power including LC, but excluding LH and LHe and photodisintegrations
+!      log_Lnuc ! log(LH + LHe + LZ)
       !log_Lnuc_sub_log_L
-      extra_L ! integral of extra_heat in Lsun units
-      log_extra_L ! log10 extra_L
+!      extra_L ! integral of extra_heat in Lsun units
+!      log_extra_L ! log10 extra_L
       !log_Lneu ! log10 power emitted in neutrinos, nuclear and thermal (in Lsun units)
       !log_Lneu_nuc ! log10 power emitted in neutrinos, nuclear sources only (in Lsun units)
       !log_Lneu_nonnuc ! log10 power emitted in neutrinos, thermal sources only (in Lsun units)
-!      mass_loc_of_max_eps_nuc ! (in Msun units)
+      !mass_loc_of_max_eps_nuc ! (in Msun units)
       !mass_ext_to_max_eps_nuc ! (in Msun units)
-!      eps_grav_integral ! (in Lsun units)
+      !eps_grav_integral ! (in Lsun units)
       !log_abs_Lgrav ! log10 abs(eps_grav_integral) (in Lsun units)
 
 
    ! conditions at the photosphere
-      log_Teff ! log10 effective temperature
       !effective_T
       !photosphere_L ! Lsun units
       !photosphere_r ! Rsun units
@@ -370,13 +383,11 @@
    ! conditions at or near the surface of the model (outer edge of outer cell)
 
       !luminosity ! luminosity in Lsun units
-      log_L ! log10 luminosity in Lsun units
-      log_R ! log10 radius in Rsun units
+!      log_R ! log10 radius in Rsun units
       !radius ! Rsun
       !radius_cm
       !log_R_cm
 
-      log_g ! log10 gravity
       !gravity
       !log_Ledd
       !log_L_div_Ledd ! log10(L/Leddington)
@@ -424,23 +435,20 @@
 
    ! conditions near center
 
-      log_center_T ! temperature
-      log_center_Rho ! density
-      log_center_P ! pressure
+!      log_center_P ! pressure
       !center_T ! temperature
       !center_Rho ! density
       !center_P ! pressure
 
-      center_degeneracy ! the electron chemical potential in units of k*T
-      center_gamma ! plasma interaction parameter
-      center_mu
-      center_ye
-      center_abar
+!      center_degeneracy ! the electron chemical potential in units of k*T
+!      center_mu
+!      center_ye
+!      center_abar
 
-!      center_eps_grav
+      !center_eps_grav
       !center_non_nuc_neu
       !center_dL_dm
-!      center_eps_nuc
+      !center_eps_nuc
       !d_center_eps_nuc_dlnT
       !d_center_eps_nuc_dlnd
       !log_center_eps_nuc
@@ -458,14 +466,11 @@
 
    ! mass fractions near center
 
-      center h1
-      center he4
-      center c12
-      center c13
-      center n13
-      center n14
-      center o16
-      center o18
+!      center c13
+      !center n13
+      !center n14
+      !center o16
+      !center o18
       !center ne20
       !center ne22
       !center na23
@@ -492,7 +497,6 @@
 
    ! mass fractions near surface
 
-      surface h1
       !surface he4
       !surface c12
       !surface o16
@@ -528,10 +532,10 @@
 
    ! mass totals for entire star (in Msun units)
 
-      total_mass h1
-      total_mass he4
-      total_mass c12
-      total_mass o16
+!      total_mass h1
+!      total_mass he4
+      !total_mass c12
+      !total_mass o16
       ! etc.
 
    ! log10 mass totals for entire star (in Msun units)
@@ -558,10 +562,10 @@
 
    ! log10 total luminosity for reaction categories (Lsun units)
 
-      pp
-      cno
-      tri_alfa
-      burn_c
+!      pp
+!      cno
+!      tri_alfa
+!      burn_c
 !      burn_n
 !      burn_o
 !      burn_ne
@@ -574,9 +578,9 @@
 !      burn_ti
 !      burn_cr
 !      burn_fe
-      c12_c12
-      c12_o16
-      o16_o16
+!      c12_c12
+!      c12_o16
+!      o16_o16
 !      photo
 !      pnhe4
 !      other
@@ -674,6 +678,9 @@
 
 
    ! info at location of max temperature
+
+!      log_max_T ! temperature
+      !max_T
       !max_T_lgT
       !max_T_mass ! (Msun)
       !max_T_radius ! (Rsun)
@@ -770,9 +777,9 @@
 
 
    ! asteroseismology
-      !delta_nu ! large frequency separation for p-modes (microHz)
+!      delta_nu ! large frequency separation for p-modes (microHz)
          ! 1e6/(seconds for sound to cross diameter of star)
-      !delta_Pg ! g-mode period spacing for l=1 (seconds)
+!      delta_Pg ! g-mode period spacing for l=1 (seconds)
          ! sqrt(2) pi^2/(integral of brunt_N/r dr)
       !log_delta_Pg
       !nu_max ! estimate from scaling relation (microHz)
@@ -780,7 +787,7 @@
          ! with nu_max_sun = 3100 microHz, Teff_sun = 5777
       !nu_max_3_4th_div_delta_nu ! nu_max^0.75/delta_nu
       !acoustic_cutoff ! 0.5*g*sqrt(gamma1*rho/P) at surface
-      !acoustic_radius ! integral of dr/csound (seconds)
+!      acoustic_radius ! integral of dr/csound (seconds)
       !ng_for_nu_max ! = 1 / (nu_max*delta_Pg)
          ! period for g-mode with frequency nu_max = nu_max_ng*delta_Pg
       !gs_per_delta_nu ! delta_nu / (nu_max**2*delta_Pg)
@@ -798,17 +805,17 @@
 
       ! energy information
 
-         total_internal_energy_start
-         total_gravitational_energy_start
+!         total_internal_energy_start
+         !total_gravitational_energy_start
          !total_linear_kinetic_energy_start
          !total_rotational_kinetic_energy_start
-         total_energy_start
-         total_internal_energy
-         total_gravitational_energy
+!         total_energy_start
+!         total_internal_energy
+         !total_gravitational_energy
          !total_linear_kinetic_energy
          !total_rotational_kinetic_energy
-         total_energy
-         total_eps_grav
+!         total_energy
+         !total_eps_grav
          !total_visc_heat_added
          !cumulative_visc_heat_added
          !total_KE_removed_by_visc
@@ -820,8 +827,8 @@
 !         total_nuclear_heating
 !         total_non_nuc_neu_cooling
          !total_irradiation_heating
-         total_extra_heating
-         total_energy_sources_and_sinks
+!         total_extra_heating
+!         total_energy_sources_and_sinks
          !cumulative_sources_and_sinks
          !error_in_energy_conservation
          !rel_error_in_energy_conservation
@@ -844,10 +851,10 @@
 
       !e_thermal ! sum over all zones of Cp*T*dm
 
-      !num_retries ! total during the run
-      !num_backups ! total during the run
+!      num_retries ! total during the run
+!      num_backups ! total during the run
       !total_num_newton_iterations ! during the run
-      !num_newton_iterations ! per step
+!      num_newton_iterations ! per step
 
       !max_conv_vel_div_csound
       !max_gradT_div_grada
@@ -916,7 +923,3 @@
       !logxq_CpTMdot_lt_L
 
       !surface_extra_Pgas
-
-
-      !log_max_T ! temperature
-      !max_T
