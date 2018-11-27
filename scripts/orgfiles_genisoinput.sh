@@ -26,9 +26,10 @@ export ISO_DIR=$(pwd)
 
 cb=$1 # script input argument
 destdir="data/tracks/c$cb"
-rm -r data/*
-mkdir --parents $destdir
-mkdir --parents data/eeps data/isochrones
+# rm -r data/*
+rm data/eeps/* data/isochrones/*
+# mkdir --parents $destdir
+# mkdir --parents data/eeps data/isochrones
 
 maindir="mesaruns"
 spin="SD"
@@ -37,36 +38,25 @@ isocoutput="isochrone_c$cb.dat"
 # termout="makeeepiso.out"
 
 echo
-echo "Copying history.data files from $maindir/RUNS_c0_for_isochrones/.../LOGS to $destdir"
+# echo "Copying history.data files from $maindir/RUNS_c0_for_isochrones/.../LOGS to $destdir"
+echo "Generating track list. History.data files are unchanged from prior."
 echo
 declare -a hfiles # store names of history files for input.example
 for mr in {0..5}; do
     for mp in {0..9}; do
-# for mr in {2..3}; do
-#     for mp in {0..1}; do
-        srchdat="/home/tjr63/${maindir}/RUNS_c0_for_isochrones/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
-        if [ -e $srchdat ]; then
-            hdat=${destdir}/m${mr}p${mp}.data
-            lnct=$(( $(sed -n '$=' ${srchdat}) -5 ))
-            (head -5 > ${hdat}head; tail -$lnct > ${hdat}tail) < ${srchdat}
-            cut -c42-164,206-2378 ${hdat}tail >> ${hdat}head #remove the integer and extra columns
-            cut -c1-2296 ${hdat}head > ${hdat} # need to cut off line 5 at the proper number
+        # srchdat="/home/tjr63/${maindir}/RUNS_c0_for_isochrones/${spin}/c${cb}/m${mr}p${mp}/LOGS/history.data"
+        # if [ -e $srchdat ]; then
+        #     hdat=${destdir}/m${mr}p${mp}.data
+        #     lnct=$(( $(sed -n '$=' ${srchdat}) -5 ))
+        #     (head -5 > ${hdat}head; tail -$lnct > ${hdat}tail) < ${srchdat}
+        #     cut -c42-164,206-2378 ${hdat}tail >> ${hdat}head #remove the integer and extra columns
+        #     cut -c1-2296 ${hdat}head > ${hdat} # need to cut off line 5 at the proper number
+        #     hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
+        #     rm ${hdat}head ${hdat}tail
 
-# lnct=$(( $(sed -n '$=' ${hdat}) -5 ))
-# (head -5 > ${hdat}head; tail -$lnct > ${hdat}tail) < ${hdat}
-# cut -c42-164,206-2378 ${hdat}tail >> ${hdat}head #remove the integer and extra columns
-# cut -c1-2296 ${hdat}head > ${hdat}final # need to cut off line 5 at the proper number
-            # sed -i 's/                                        5                                        6/                                         5                                        6/' $hdat
-            # cp ${srchdat} ${hdat}tmp1
-            # awk '{ if (NR < 5) {print $0}
-            #     else if (NR == 5) {$59=$60=$61=$62=$63=$64=$65=$66=""; print $0}
-            #     else {$5=$59=$60=$61=$63=$64=$65=$66=""; print $0}
-            #     }' < history.data | column -t >> historym.data # ${srchdat} >> $hdat
-            # awk '{ if (NR < 7) {print $0}
-            #     else { for(i=1;i<59;i++) {print $i}
-            #         {print $62} }}' < ${hdat}tmp >> ${hdat}
+        hdat=${destdir}/m${mr}p${mp}.data
+        if [ -e $hdat ]; then
             hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
-            rm ${hdat}head ${hdat}tail
         fi
     done
 done
