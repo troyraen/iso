@@ -63,5 +63,5 @@ log10
 10.11" >> $isocinput
 
 # uncomment these lines to run make_eep and make_iso
-# export ISO_DIR=$(pwd)
-# ./make_both $isocinput
+export ISO_DIR=$(pwd)
+./make_both $isocinput
