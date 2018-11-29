@@ -1,18 +1,18 @@
 ##!/usr/local/bin/bash
 #!/bin/bash
 
-
-
 ######
+#   Assumes working directory is iso so that
+#       python script is ./scripts/hdat_clean.py
+#
 #   This function takes a cboost (int) as input
 #   Finds all history files in mesaruns dir
 #   calls a python script to generates a new file
 #       newdir/history.data from olddir/history.data
 #       keeping only columns in clist
-#   Assumes working directory is iso so that
-#       python script is ./scripts/hdat_clean.py
 #
 ######
+
 if [ $# -eq 0 ]
   then
     echo "*********** Must supply script with cboost argument in [0..6] ***********"
@@ -26,9 +26,40 @@ mkdir -p $newdir
 drs=($(find /Users/troyraen/Google_Drive/MESA/code/DATA/mesaruns -name 'mass*' -type d))
 for olddir in "${drs[@]}"; do
     hdatold="$olddir/LOGSc$cb/history.data"
-    hdatnew="$newdir/m${olddir: -3}.data"
+    mass="${olddir: -3}"
+    if [[ $mass == p* ]] # check to see if mass has 2 digits after 'p' (m#p##)
+    then
+        mass="${olddir: -4}"
+    fi
+    hdatnew="$newdir/m$mass.data"
+    # hdatnew="$newdir/m${olddir: -3}.data"
+    echo
+    echo 'processing' $hdatold
+    echo 'writing to' $hdatnew
+    echo
     python ./scripts/hdat_clean.py $hdatold $hdatnew
 done
+
+
+######
+#   This function takes as input:
+#       . cboost (int)
+#       . newdir in newdir/mass.data (history.data files for isochrones input)
+#           . (e.g. "/Users/troyraen/Google_Drive/MESA/code/iso/data/tracks/c$cb")
+#           . will be created if it does not exist
+#       . olddrs_parent in olddrs_parent/
+#           . (e.g. "/Users/troyraen/Google_Drive/MESA/code/DATA/mesaruns")
+#   Finds all history files in mesaruns dir
+#   calls a python script to generates a new file
+#       newdir/history.data from olddir/history.data
+#       keeping only columns in clist
+#   Assumes working directory is iso so that
+#       python script is ./scripts/hdat_clean.py
+#
+######
+
+
+
 #
 # function data_reduc {
 #     if [ $# -eq 0 ] # NEED NOT EQUAL TO 3

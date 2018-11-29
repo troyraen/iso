@@ -1,4 +1,4 @@
-# To strip history.data files of all non-essential columns:
+# To copy history.data files stripped of all non-essential columns:
 Check file paths in hdat_clean.sh.
 Then run that file. It takes a cboost value as input,
 finds history.data files in specified directory,
@@ -12,12 +12,12 @@ Make sure correct history_columns.list file is in main iso dir before
 running make_eep or make_iso.
 
 # My Plotting:
-Use plot_iso_glue.py to convert isochrone data output to a csv file
+Use glue/convert_iso_file.py to convert isochrone data output to a csv file
 and then run glue.
 
 The plotting info below is old and never worked...
 
-# Plotting:
+Plotting:
 mesa_plot_grid.py and read_mist_models.py can be used for plotting.
 Use mesa_plot_grid.plot_iso('MIST_vXX/feh_XXX_afe_XXX')
 mv data dir to MIST_vXX/feh_XXX_afe_XXX/ first
