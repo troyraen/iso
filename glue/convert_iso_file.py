@@ -3,7 +3,7 @@ import numpy as np
 
 # converts isochrone output files (isochrone_cb.dat) to isochrones.csv for Glue
 # can combine files from multple cboosts
-def iso_to_csv(cboost=[0]):
+def iso_to_csv(cboost=[0], append_cb=True):
     isodir = '/Users/troyraen/Google_Drive/MESA/code/iso'
     fout = isodir+'/glue/isochrones.csv'
 
@@ -12,10 +12,10 @@ def iso_to_csv(cboost=[0]):
         fin = isodir+'/data/isochrones/isochrone_c'+str(cb)+'.dat'
         # get column names and make sure they're the same across files
         if i == 0:
-            isoheader, cnt = get_columns(fin, cboost=False)
+            isoheader, cnt = get_columns(fin, cboost=append_cb)
             alldata = np.empty((1,cnt))
         else:
-            hdr, __ = get_columns(fin, cboost=False)
+            hdr, __ = get_columns(fin, cboost=append_cb)
             if hdr != isoheader:
                 print()
                 print(fin, 'COLUMNS DO NOT MATCH isochrone_c0.dat')
@@ -23,9 +23,11 @@ def iso_to_csv(cboost=[0]):
 
         # get data
         newdata = np.genfromtxt(fin, comments='#')
-        print(alldata.shape)
-        print(newdata.shape)
+        if append_cb:
+            cbarr = cb*np.ones((newdata.shape[0],1))
+            newdata = np.append(newdata, cbarr, axis=1)
         alldata = np.concatenate((alldata, newdata), axis=0)
+
     # write new file
     np.savetxt(fout, alldata, delimiter=',', header=isoheader, comments='')
 
