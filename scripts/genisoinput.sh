@@ -26,7 +26,16 @@ isocinput="input.example" # will create this file
 isocoutput="isochrone_c$cb.dat" # make_iso writes to this file
 
 declare -a hfiles # store names of history files for input.example
-for mr in {0..5}; do # for loops ensure list is ordered in increasing mass
+# get the m#p## files
+mr=0
+for mp in 80 83 87 90 92 94 96 98; do
+    hdat=${datadir}/m${mr}p${mp}.data
+    if [ -e $hdat ]; then
+        hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
+    fi
+done
+# get the other files
+for mr in {1..5}; do # for loops ensure list is ordered in increasing mass
     for mp in {0..9}; do
         hdat=${datadir}/m${mr}p${mp}.data
         if [ -e $hdat ]; then
@@ -34,6 +43,7 @@ for mr in {0..5}; do # for loops ensure list is ordered in increasing mass
         fi
     done
 done
+
 len=$(echo ${#hfiles[@]})
 # cp /home/tjr63/mesaruns/history_columns.list .
 
