@@ -79,12 +79,12 @@ ${isocoutput}
 min_max
 log10
 51
-5.0
-10.11" >> $isocinput
+7.0
+10.21" >> $isocinput
 
 # keep a copy of input files
 cp ${isocinput} ${eepinput} ${hdatadir}/.
 
 # uncomment these lines to run make_eep and make_iso
-# export ISO_DIR=$(pwd)
-# ./make_both $isocinput
+export ISO_DIR=$(pwd)
+./make_both $isocinput
