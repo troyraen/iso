@@ -1,5 +1,6 @@
 ## Troy Joseph Raen
 Script orgfiles_genisoinput.sh will copy history.data files into data/tracks/cb and generate an input.example file.
+See ./scripts/README.md for useage of this code.
 
 The following is Aaron's original readme:
 

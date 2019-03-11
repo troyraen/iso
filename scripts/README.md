@@ -1,22 +1,29 @@
+## Use dir isomy on Osiris
+
 # To copy history.data files stripped of all non-essential columns:
 Check file paths in hdat_clean.sh.
-Then run that file. It takes a cboost value as input,
+Then run that file with (e.g. for cb=0): ./scripts/hdat_clean.sh 0
+It takes a cboost value as input,
 finds history.data files in specified directory,
 then calls hdat_clean.py which generates a new history.data file in new location
+<!-- This script does not currently work on Osiris.
+    Uses old version of Numpy where genfromtxt does not have keyword max_rows. -->
 
 # To generate isochrone input file:
 Check that the cleaned history.data files are in dir iso/data/tracks/cb.
-Then run genisoinput.sh to generate input file for make_eep and make_iso
+Then run with (e.g. for cb=0): ./scripts/genisoinput.sh 0
+to generate input file for make_eep and make_iso
 (and optionally run make_eep and make_iso).
 Make sure correct history_columns.list file is in main iso dir before
 running make_eep or make_iso.
 
 # My Plotting:
-Use glue/convert_iso_file.py to convert isochrone data output to a csv file
-and then run glue.
+See glue/readme_glue.py for usage.
+(Use glue/convert_iso_file.py to convert isochrone data output to a csv file
+and then run glue.)
+
 
 The plotting info below is old and never worked...
-
 Plotting:
 mesa_plot_grid.py and read_mist_models.py can be used for plotting.
 Use mesa_plot_grid.plot_iso('MIST_vXX/feh_XXX_afe_XXX')
