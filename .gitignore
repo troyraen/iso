@@ -1,1 +1,7 @@
+# **/ matches in all directories
+# dir/** matches everything inside dir directory
+# relative to the location of the .gitignore
+
 data/
+**/*pycache*
+**/*.DS_Store*
