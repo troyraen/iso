@@ -5,3 +5,7 @@
 data/
 **/*pycache*
 **/*.DS_Store*
+glue/isochrones*.csv
+glue/zen_prop_1118/
+glue/zp1118_peep/
+make/
