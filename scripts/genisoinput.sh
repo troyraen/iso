@@ -28,20 +28,28 @@ isocinput="input.example" # will create this file
 isocoutput="isochrone_c$cb.dat" # make_iso writes to this file
 
 declare -a hfiles # store names of history files for input.example
+
 # get the m#p## files
-mr=0
-for mp in 80 83 87 90 92 94 96 98; do
-    hdat=${hdatadir}/m${mr}p${mp}.data
-    if [ -e $hdat ]; then
-        hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
-    fi
-done
+# mr=0
+# for mp in 80 85 90 95; do
+#     hdat=${hdatadir}/m${mr}p${mp}.data
+#     if [ -e $hdat ]; then
+#         hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
+#     fi
+# done
+
 # get the other files
-for mr in {1..5}; do # for loops ensure list is ordered in increasing mass
-    for mp in {0..9}; do
-        hdat=${hdatadir}/m${mr}p${mp}.data
+for mr in {0..5}; do # for loops ensure list is ordered in increasing mass
+    # for mp in {0..9}; do
+    for mp in $(seq 0 5 99); do
+        if [ ${mp} -eq 0 ] || [ ${mp} -eq 5 ]; then
+            mass="m${mr}p0${mp}"
+    	else
+    		mass="m${mr}p${mp}"
+    	fi
+        hdat="${hdatadir}/${mass}.data"
         if [ -e $hdat ]; then
-            hfiles=("${hfiles[@]}" "m${mr}p${mp}.data")
+            hfiles=("${hfiles[@]}" "${mass}.data")
         fi
     done
 done
@@ -75,8 +83,8 @@ log10
 10.11" >> $isocinput
 
 # keep a copy of input files
-cp ${isocinput} ${eepinput} ${datadir}/.
+cp ${isocinput} ${eepinput} ${hdatadir}/.
 
 # uncomment these lines to run make_eep and make_iso
-export ISO_DIR=$(pwd)
-./make_both $isocinput
+# export ISO_DIR=$(pwd)
+# ./make_both $isocinput
