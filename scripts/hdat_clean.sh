@@ -21,9 +21,9 @@ fi
 
 
 cb=$1
-newdir="/Users/troyraen/Google_Drive/MESA/code/iso/data/tracks/c$cb"
+newdir="/home/tjr63/isomy/data/tracks/c$cb"
 mkdir -p $newdir
-drs=($(find /Users/troyraen/Google_Drive/MESA/code/DATA/mesaruns -name 'mass*' -type d))
+drs=($(find /home/tjr63/mesaruns/RUNS_2test_final/plotsdata -name 'mass*' -type d))
 for olddir in "${drs[@]}"; do
     hdatold="$olddir/LOGSc$cb/history.data"
     mass="${olddir: -3}"
