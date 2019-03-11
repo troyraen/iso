@@ -33,11 +33,15 @@ for olddir in "${drs[@]}"; do
     fi
     hdatnew="$newdir/m$mass.data"
     # hdatnew="$newdir/m${olddir: -3}.data"
-    echo
-    echo 'processing' $hdatold
-    echo 'writing to' $hdatnew
-    echo
-    python ./scripts/hdat_clean.py $hdatold $hdatnew
+    if [ ! -e ${hdatnew} ]; then
+        echo
+        echo 'processing' $hdatold
+        echo 'writing to' $hdatnew
+        echo
+        python ./scripts/hdat_clean.py $hdatold $hdatnew
+    else
+        echo ${hdatnew} 'exists. Skipping...'
+    fi
 done
 
 
