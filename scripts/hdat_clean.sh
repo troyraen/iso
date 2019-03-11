@@ -1,5 +1,5 @@
-##!/usr/local/bin/bash
-#!/bin/bash
+#!/usr/local/bin/bash
+##!/bin/bash
 
 ######
 #   Assumes working directory is iso so that
@@ -21,9 +21,9 @@ fi
 
 
 cb=$1
-newdir="/home/tjr63/isomy/data/tracks/c$cb"
+newdir="/Users/troyraen/Osiris/isomy/data/tracks/c$cb"
 mkdir -p $newdir
-drs=($(find /home/tjr63/mesaruns/RUNS_2test_final/plotsdata -name 'mass*' -type d))
+drs=($(find /Users/troyraen/Osiris/mesaruns/RUNS_2test_final/plotsdata -name 'mass*' -type d))
 for olddir in "${drs[@]}"; do
     hdatold="$olddir/LOGSc$cb/history.data"
     mass="${olddir: -3}"
