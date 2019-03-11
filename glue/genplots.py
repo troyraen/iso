@@ -13,11 +13,12 @@ import layers as pl
 
 
 ########### HR plot viewer
-def HR(layers_to_show=['isochrones'], state_options='default', vsize=big):
+def HR(layers_to_show=['isochrones'], state_options='default', vsize=big, grid=True):
     """
     LAYERS_TO_SHOW can be dict of subsets' states (eg ss_cb) or a list of subset state names
     STATE_OPTIONS = OD([ attribute, value ]) for the layer state, from
         http://docs.glueviz.org/en/stable/api/glue.viewers.scatter.state.ScatterLayerState.html
+    GRID draws background grid
     """
     dc, isos = dclist
     lts = layers_to_show
@@ -42,6 +43,8 @@ def HR(layers_to_show=['isochrones'], state_options='default', vsize=big):
     ax.set_title('HR')
     ax.set_xlabel('log(T$_{eff}$)')
     ax.set_ylabel('log(L)')
+    if grid:
+        ax.grid(linestyle='-', linewidth='0.5', color='0.7')
     plt.tight_layout()
     ax.figure.canvas.draw()  # update the plot
 
