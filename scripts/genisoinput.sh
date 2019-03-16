@@ -41,8 +41,8 @@ declare -a hfiles # store names of history files for input.example
 # get the other files
 for mr in {0..5}; do # for loops ensure list is ordered in increasing mass
     # for mp in {0..9}; do
-    for mp in $(seq 0 5 99); do
-        if [ ${mp} -eq 0 ] || [ ${mp} -eq 5 ]; then
+    for mp in $(seq 0 99); do
+        if [ ${mp} -lt 10 ]; then
             mass="m${mr}p0${mp}"
     	else
     		mass="m${mr}p${mp}"
